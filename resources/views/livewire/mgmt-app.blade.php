@@ -40,14 +40,15 @@
 
             <form class="flex flex-col items-center pt-16" wire:submit.prevent="subscribe">
                 <x-text-input class="px-5 py-3 border border-blue-400 w-80" type="email" name="email"
-                    placeholder="Email address" wire:model="email">
+                    placeholder="Email address" wire:model.defer="email">
 
                 </x-text-input>
                 <span class="text-xs text-gray-100">
                     {{ $errors->has('email') ? $errors->first('email') : 'We will send you a confirmation email.' }}
                 </span>
                 <x-primary-button class="justify-center px-5 py-5 mt-10 bg-blue-500 w-80">
-                    Get In
+                    <span class="animate-spin" wire:loading wire:target='subscribe'>&#9696;</span>
+                    <span wire:loading.remove wire:target='subscribe'>Get In</span>
                 </x-primary-button>
             </form>
         </x-modal>
