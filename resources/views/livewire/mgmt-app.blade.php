@@ -1,10 +1,11 @@
     <div class="flex flex-col w-full h-screen bg-indigo-900" x-data="{
-        showSubscribe: false,
-        showSuccess: false,
+        showSubscribe: @entangle('showSubscribe'),
+        showSuccess: @entangle('showSuccess'),
     }">
         <nav class="container flex justify-between pt-5 mx-auto text-indigo-200">
             <a href="/" class="text-4xl font-bold">
-                <x-application-logo class="w-16 h-16 fill-current"></x-application-logo>
+                <x-application-logo class="w-16 h-16 fill-current">
+                </x-application-logo>
             </a>
 
             <div class="flex justify-end">
@@ -60,8 +61,16 @@
                 Great!
             </p>
 
-            <p class="text-3xl text-center text-white">
-                See you in your inbox
-            </p>
+            @if (request()->has('verified') && request()->has('verified') == 1)
+                <p class="text-3xl text-center text-white">
+                    Thanks for confirming
+                </p>
+            @else
+                <p class="text-3xl text-center text-white">
+                    See you in your inbox
+                </p>
+            @endif
+
+
         </x-modal>
     </div>
