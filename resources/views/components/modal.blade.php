@@ -1,4 +1,4 @@
-@props([
+{{-- @props([
     'name',
     'show' => false,
     'maxWidth' => '2xl'
@@ -45,12 +45,12 @@ $maxWidth = [
     x-on:keydown.tab.prevent="$event.shiftKey || nextFocusable().focus()"
     x-on:keydown.shift.tab.prevent="prevFocusable().focus()"
     x-show="show"
-    class="fixed inset-0 overflow-y-auto px-4 py-6 sm:px-0 z-50"
+    class="fixed inset-0 z-50 px-4 py-6 overflow-y-auto sm:px-0"
     style="display: {{ $show ? 'block' : 'none' }};"
 >
     <div
         x-show="show"
-        class="fixed inset-0 transform transition-all"
+        class="fixed inset-0 transition-all transform"
         x-on:click="show = false"
         x-transition:enter="ease-out duration-300"
         x-transition:enter-start="opacity-0"
@@ -72,6 +72,15 @@ $maxWidth = [
         x-transition:leave-start="opacity-100 translate-y-0 sm:scale-100"
         x-transition:leave-end="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
     >
+        {{ $slot }}
+    </div>
+</div> --}}
+
+@props(['trigger'])
+
+<div class="fixed top-0 flex items-center w-full h-full bg-gray-900 bg-opacity-60" x-show="{{ $trigger }}"
+    x-on:click.self="{{ $trigger }} = false" x-on:keydown.escape.window="{{ $trigger }} = false">
+    <div {{ $attributes->merge(['class' => 'p-8 m-auto bg-gray-500 shadow-2xl rounded-xl']) }}>
         {{ $slot }}
     </div>
 </div>
