@@ -3,7 +3,7 @@
         showSuccess: @entangle('showSuccess'),
     }">
         <nav class="container flex justify-between pt-5 mx-auto text-indigo-200">
-            <a href="/" class="text-4xl font-bold">
+            <a href="/" class="text-4xl font-bold testing-style">
                 <x-application-logo class="w-16 h-16 fill-current">
                 </x-application-logo>
             </a>
