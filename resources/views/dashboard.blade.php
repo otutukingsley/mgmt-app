@@ -13,8 +13,8 @@
                         Actions
                     </p>
                     <ul class="pl-5 list-disc">
-                        <li class="text-blue-500 hover:underline">
-                            <a href="#">
+                        <li>
+                            <a href="{{ route('subscribers.all') }}" class="text-blue-500 hover:underline">
                                 Manage Subscribers
                             </a>
                         </li>
